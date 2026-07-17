@@ -1,6 +1,6 @@
 import { asignarIva, resultadoTotalTicket } from "./calculaTicket.helper.js";
 
-export const calculaTicket = (lineasTicket) => {
+export const calculaLineaTicket = (lineasTicket) => {
     const resultadoLineaTicket = [];
     var iva = 0.21;
     var precioConIva;
