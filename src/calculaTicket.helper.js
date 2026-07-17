@@ -96,3 +96,22 @@ export function asignarIva(tipoIva){
     }
     return iva;
 }
+
+export const calculaSubtotalProductos = (lineasTicket) => {
+    return lineasTicket.reduce((acumulado, linea) => {
+        const subtotalParcial = linea.producto.precio * linea.cantidad;
+        acumulado = acumulado + subtotalParcial;
+        return acumulado;
+    }, 0);
+}
+
+export const calculaTotalIva = (lineasTicket) => {
+    return lineasTicket.reduce((acumulado, linea) => {
+        const subtotalDelProducto = linea.producto.precio * linea.cantidad;
+        const iva = asignarIva(linea.producto.tipoIva);
+        const ivaDelProducto = subtotalDelProducto * iva;
+        acumulado = acumulado + ivaDelProducto;
+        return acumulado;
+    }, 0);
+
+}
